@@ -1,5 +1,6 @@
 /**
- * Custom error class which can store status code and message
+ * Custom error class which can store status code and message.
+ * Inspired by: https://www.smashingmagazine.com/2020/08/error-handling-nodejs-error-classes/
  */
 class AppError extends Error {
   status: number;
