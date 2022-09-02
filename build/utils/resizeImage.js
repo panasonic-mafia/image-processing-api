@@ -50,7 +50,7 @@ var fs_1 = require("fs");
  * @returns
  */
 var resizeImage = function (imgPath, width, height) { return __awaiter(void 0, void 0, void 0, function () {
-    var parsedPath, newPath, error_1;
+    var parsedPath, thumbFolder, newPath, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -64,6 +64,10 @@ var resizeImage = function (imgPath, width, height) { return __awaiter(void 0, v
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 3, , 4]);
+                thumbFolder = path_1.default.join(process.cwd(), 'assets', 'thumb');
+                if (!(0, fs_1.existsSync)(thumbFolder)) {
+                    (0, fs_1.mkdirSync)(thumbFolder);
+                }
                 newPath = path_1.default.join(process.cwd(), "assets", "thumb", "".concat(parsedPath.name, "_thumb_").concat(width, "x").concat(height).concat(parsedPath.ext));
                 return [4 /*yield*/, (0, sharp_1.default)(imgPath)
                         .resize({ width: width, height: height, fit: "outside" })

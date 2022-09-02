@@ -2,22 +2,25 @@
 
 A learning project for udacity full-stack Javascript Course.
 
-
 ## Run the server
 
 To run server in dev mode (using nodemon):
+
 ```
 $ npm run dev
 ```
 
 To run server in production mode:
+
 ```
 $ npm run build
 $ npm run start
 ```
 
 ## Endpoints
+
 ### /api/images
+
 The endpoint for serving resized images from `assets/thumb` folder.
 
 Example:
@@ -31,17 +34,23 @@ Example:
 - Each hit of the endpoint will be logged in console
 
 ## Run unit tests
+
 To run unit tests use:
+
 ```
 $ npm run test
 ```
+
 ## Run linting & prettier
+
 To run eslint on code use:
+
 ```
 $ npm run lint
 ```
+
 To run prettier use:
+
 ```
 $ npm run prettify
 ```
-

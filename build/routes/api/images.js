@@ -59,29 +59,31 @@ images.get("/", function (req, res, next) { return __awaiter(void 0, void 0, voi
                 width = parseInt(req.query.width);
                 height = parseInt(req.query.height);
                 //validating the input
-                if (!width || !height) {
+                if (!width || !height || !filename) {
                     next(new AppError_1.default(400, "Width or height parameters are wrong or missing"));
+                    return [2 /*return*/];
                 }
                 rawImgPath = path_1.default.join(process.cwd(), "assets", "".concat(filename, ".jpg"));
                 rawImgExists = node_fs_1.default.existsSync(rawImgPath);
                 if (!rawImgExists) {
                     next(new AppError_1.default(400, "Image not found, try to provide different filename"));
+                    return [2 /*return*/];
                 }
                 resizedImgPath = path_1.default.join(process.cwd(), "assets", "thumb", "".concat(filename, "_thumb_").concat(width, "x").concat(height, ".jpg"));
                 resizedImgExists = node_fs_1.default.existsSync(resizedImgPath);
                 if (!resizedImgExists) return [3 /*break*/, 1];
                 res.sendFile(resizedImgPath);
-                return [3 /*break*/, 3];
+                return [2 /*return*/];
             case 1: return [4 /*yield*/, (0, resizeImage_1.default)(rawImgPath, width, height)];
             case 2:
                 _a.sent();
                 res.sendFile(resizedImgPath);
-                _a.label = 3;
+                return [2 /*return*/];
             case 3: return [3 /*break*/, 5];
             case 4:
                 error_1 = _a.sent();
                 next(new AppError_1.default(500, "Unknown error"));
-                return [3 /*break*/, 5];
+                return [2 /*return*/];
             case 5: return [2 /*return*/];
         }
     });

@@ -1,6 +1,6 @@
 import sharp from "sharp";
 import path, { ParsedPath } from "path";
-import { existsSync } from "fs";
+import { existsSync, mkdirSync } from "fs";
 
 /**
  * Resize image based on input width and height
@@ -24,6 +24,12 @@ const resizeImage = async (
   }
 
   try {
+    //create thumb folder if missing
+    const thumbFolder: string = path.join(process.cwd(), "assets", "thumb");
+    if (!existsSync(thumbFolder)) {
+      mkdirSync(thumbFolder);
+    }
+
     const newPath: string = path.join(
       process.cwd(),
       "assets",
