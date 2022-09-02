@@ -15,6 +15,9 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Custom error class which can store status code and message
+ */
 var AppError = /** @class */ (function (_super) {
     __extends(AppError, _super);
     function AppError(status, message) {

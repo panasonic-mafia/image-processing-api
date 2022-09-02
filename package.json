@@ -6,7 +6,8 @@
   "scripts": {
     "build": "npx tsc",
     "test": "npx tsc && jasmine",
-    "start": "nodemon src/index.ts",
+    "dev": "nodemon src/index.ts",
+    "start": "node ./build/index.js",
     "lint": "npx eslint .",
     "prettify": "npx prettier --write ."
   },

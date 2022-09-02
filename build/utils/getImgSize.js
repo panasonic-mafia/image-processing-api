@@ -40,6 +40,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var sharp_1 = __importDefault(require("sharp"));
+/**
+ * Get width and height of image
+ * @param filepath - path to image
+ * @returns width and height of image
+ */
 var getImgSize = function (filepath) { return __awaiter(void 0, void 0, void 0, function () {
     var imgMeta, width, height;
     return __generator(this, function (_a) {

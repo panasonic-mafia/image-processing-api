@@ -30,9 +30,11 @@ var dotenv = __importStar(require("dotenv"));
 var express_1 = __importDefault(require("express"));
 var routes_1 = __importDefault(require("./routes"));
 var errorHandler_1 = __importDefault(require("./middlewares/errorHandler"));
+var morgan_1 = __importDefault(require("morgan"));
 dotenv.config();
 var app = (0, express_1.default)();
 var port = parseInt(process.env.PORT) || 3000;
+app.use((0, morgan_1.default)("tiny"));
 app.use("/api", routes_1.default);
 app.use(errorHandler_1.default);
 app.listen(port, function () {

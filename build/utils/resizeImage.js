@@ -42,6 +42,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var sharp_1 = __importDefault(require("sharp"));
 var path_1 = __importDefault(require("path"));
 var fs_1 = require("fs");
+/**
+ * Resize image based on input width and height
+ * @param imgPath
+ * @param width
+ * @param height
+ * @returns
+ */
 var resizeImage = function (imgPath, width, height) { return __awaiter(void 0, void 0, void 0, function () {
     var parsedPath, newPath, error_1;
     return __generator(this, function (_a) {

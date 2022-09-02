@@ -45,6 +45,10 @@ var node_fs_1 = __importDefault(require("node:fs"));
 var resizeImage_1 = __importDefault(require("../../utils/resizeImage"));
 var AppError_1 = __importDefault(require("../../errors/AppError"));
 var images = (0, express_1.Router)();
+/**
+ * A route for serving resized images from assets/thumbs folder.
+ * If resized image is missing then image is resized first and then served.
+ */
 images.get("/", function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
     var filename, width, height, rawImgPath, rawImgExists, resizedImgPath, resizedImgExists, error_1;
     return __generator(this, function (_a) {
