@@ -43,9 +43,10 @@ var express_1 = require("express");
 var path_1 = __importDefault(require("path"));
 var node_fs_1 = __importDefault(require("node:fs"));
 var resizeImage_1 = __importDefault(require("../../utils/resizeImage"));
+var AppError_1 = __importDefault(require("../../errors/AppError"));
 var images = (0, express_1.Router)();
-images.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var filename, width, height, rawImgPath, rawImgExists, resizedImgPath, resizedImgExists, resized, error_1, err;
+images.get("/", function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
+    var filename, width, height, rawImgPath, rawImgExists, resizedImgPath, resizedImgExists, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -55,37 +56,28 @@ images.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, f
                 height = parseInt(req.query.height);
                 //validating the input
                 if (!width || !height) {
-                    res.status(400).send('Width or height parameters are wrong or missing');
-                    return [2 /*return*/];
+                    next(new AppError_1.default(400, "Width or height parameters are wrong or missing"));
                 }
-                rawImgPath = path_1.default.join(process.cwd(), 'assets', "".concat(filename, ".jpg"));
+                rawImgPath = path_1.default.join(process.cwd(), "assets", "".concat(filename, ".jpg"));
                 rawImgExists = node_fs_1.default.existsSync(rawImgPath);
                 if (!rawImgExists) {
-                    res.status(400).send("Image not found, try to provide different filename");
-                    return [2 /*return*/];
+                    next(new AppError_1.default(400, "Image not found, try to provide different filename"));
                 }
-                resizedImgPath = path_1.default.join(process.cwd(), 'assets', 'thumb', "".concat(filename, "_thumb_").concat(width, "x").concat(height, ".jpg"));
+                resizedImgPath = path_1.default.join(process.cwd(), "assets", "thumb", "".concat(filename, "_thumb_").concat(width, "x").concat(height, ".jpg"));
                 resizedImgExists = node_fs_1.default.existsSync(resizedImgPath);
                 if (!resizedImgExists) return [3 /*break*/, 1];
                 res.sendFile(resizedImgPath);
                 return [3 /*break*/, 3];
             case 1: return [4 /*yield*/, (0, resizeImage_1.default)(rawImgPath, width, height)];
             case 2:
-                resized = _a.sent();
-                if (resized) {
-                    res.sendFile(resizedImgPath);
-                    return [2 /*return*/];
-                }
-                else {
-                    throw new Error('Unable to resize the image');
-                }
+                _a.sent();
+                res.sendFile(resizedImgPath);
                 _a.label = 3;
             case 3: return [3 /*break*/, 5];
             case 4:
                 error_1 = _a.sent();
-                err = error_1;
-                res.status(500).send(err.message);
-                return [2 /*return*/];
+                next(new AppError_1.default(500, "Unknown error"));
+                return [3 /*break*/, 5];
             case 5: return [2 /*return*/];
         }
     });

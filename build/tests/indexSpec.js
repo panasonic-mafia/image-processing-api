@@ -48,7 +48,7 @@ describe("API endpoints", function () {
             var response;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, request.get('/api/images?filename=palmtunnel&width=200&height=200')];
+                    case 0: return [4 /*yield*/, request.get("/api/images?filename=palmtunnel&width=200&height=200")];
                     case 1:
                         response = _a.sent();
                         expect(response.status).toBe(200);
@@ -60,7 +60,7 @@ describe("API endpoints", function () {
             var response;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, request.get('/api/images?filename=nonexistingimage&width=200&height=200')];
+                    case 0: return [4 /*yield*/, request.get("/api/images?filename=nonexistingimage&width=200&height=200")];
                     case 1:
                         response = _a.sent();
                         expect(response.status).toBe(400);
@@ -74,7 +74,7 @@ describe("API endpoints", function () {
             var response;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, request.get('/api')];
+                    case 0: return [4 /*yield*/, request.get("/api")];
                     case 1:
                         response = _a.sent();
                         expect(response.status).toBe(200);

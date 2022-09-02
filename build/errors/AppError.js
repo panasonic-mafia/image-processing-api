@@ -15,21 +15,14 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var jasmine_spec_reporter_1 = require("jasmine-spec-reporter");
-var CustomProcessor = /** @class */ (function (_super) {
-    __extends(CustomProcessor, _super);
-    function CustomProcessor() {
-        return _super !== null && _super.apply(this, arguments) || this;
+var AppError = /** @class */ (function (_super) {
+    __extends(AppError, _super);
+    function AppError(status, message) {
+        var _this = _super.call(this, message) || this;
+        _this.status = status;
+        _this.message = message;
+        return _this;
     }
-    CustomProcessor.prototype.displayJasmineStarted = function (info, log) {
-        return "".concat(log);
-    };
-    return CustomProcessor;
-}(jasmine_spec_reporter_1.DisplayProcessor));
-jasmine.getEnv().clearReporters();
-jasmine.getEnv().addReporter(new jasmine_spec_reporter_1.SpecReporter({
-    spec: {
-        displayStacktrace: jasmine_spec_reporter_1.StacktraceOption.NONE,
-    },
-    customProcessors: [CustomProcessor],
-}));
+    return AppError;
+}(Error));
+exports.default = AppError;

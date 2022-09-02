@@ -49,7 +49,7 @@ var resizeImage = function (imgPath, width, height) { return __awaiter(void 0, v
             case 0:
                 parsedPath = path_1.default.parse(imgPath);
                 if (!(0, fs_1.existsSync)(imgPath)) {
-                    throw new Error('Image does not exists');
+                    throw new Error("Image does not exists");
                 }
                 if (!width || !height) {
                     throw new Error("Width or height is not provided");
@@ -57,17 +57,17 @@ var resizeImage = function (imgPath, width, height) { return __awaiter(void 0, v
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 3, , 4]);
-                newPath = path_1.default.join(process.cwd(), 'assets', 'thumb', "".concat(parsedPath.name, "_thumb_").concat(width, "x").concat(height).concat(parsedPath.ext));
+                newPath = path_1.default.join(process.cwd(), "assets", "thumb", "".concat(parsedPath.name, "_thumb_").concat(width, "x").concat(height).concat(parsedPath.ext));
                 return [4 /*yield*/, (0, sharp_1.default)(imgPath)
-                        .resize({ width: width, height: height, fit: 'outside' })
+                        .resize({ width: width, height: height, fit: "outside" })
                         .toFile(newPath)];
             case 2:
                 _a.sent();
-                return [2 /*return*/, true];
+                return [2 /*return*/];
             case 3:
                 error_1 = _a.sent();
                 console.log(error_1);
-                throw new Error('Error when resizing the image');
+                throw new Error("Error when resizing the image");
             case 4: return [2 /*return*/];
         }
     });

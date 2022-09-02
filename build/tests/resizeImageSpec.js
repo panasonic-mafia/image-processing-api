@@ -41,27 +41,25 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var resizeImage_1 = __importDefault(require("../utils/resizeImage"));
 var path_1 = __importDefault(require("path"));
-describe('Utils', function () {
-    describe('resizeImage', function () {
-        it('Should throw an error when image path does not exists', function () { return __awaiter(void 0, void 0, void 0, function () {
+describe("Utils", function () {
+    describe("resizeImage", function () {
+        it("Should throw an error when image path does not exists", function () { return __awaiter(void 0, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, expectAsync((0, resizeImage_1.default)('', 100, 200))
-                            .toBeRejectedWithError('Image does not exists')];
+                    case 0: return [4 /*yield*/, expectAsync((0, resizeImage_1.default)("", 100, 200)).toBeRejectedWithError("Image does not exists")];
                     case 1:
                         _a.sent();
                         return [2 /*return*/];
                 }
             });
         }); });
-        it('Should not throw an error when image exists', function () { return __awaiter(void 0, void 0, void 0, function () {
+        it("Should not throw an error when image exists", function () { return __awaiter(void 0, void 0, void 0, function () {
             var imgPath;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        imgPath = path_1.default.resolve(__dirname, '../../assets/encenadaport.jpg');
-                        return [4 /*yield*/, expectAsync((0, resizeImage_1.default)(imgPath, 100, 200))
-                                .toBeResolved()];
+                        imgPath = path_1.default.resolve(__dirname, "../../assets/encenadaport.jpg");
+                        return [4 /*yield*/, expectAsync((0, resizeImage_1.default)(imgPath, 100, 200)).toBeResolved()];
                     case 1:
                         _a.sent();
                         return [2 /*return*/];
