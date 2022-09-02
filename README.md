@@ -26,7 +26,7 @@ Example:
 
 - Method: `GET`
 
-- After hitting above URL endpoint the server will resize image `assets/palmtunnel.jpg`, then it will server resized image `assets/thumb/palmtunnel_thumb_200x500.jpg`
+- After hitting above URL endpoint the server will resize image `assets/palmtunnel.jpg`, then it will serve a resized image `assets/thumb/palmtunnel_thumb_200x500.jpg`
 
 - Each hit of the endpoint will be logged in console
 
