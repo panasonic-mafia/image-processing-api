@@ -44,13 +44,14 @@ var path_1 = __importDefault(require("path"));
 var node_fs_1 = __importDefault(require("node:fs"));
 var resizeImage_1 = __importDefault(require("../../utils/resizeImage"));
 var AppError_1 = __importDefault(require("../../errors/AppError"));
+var express_validator_1 = require("express-validator");
 var images = (0, express_1.Router)();
 /**
  * A route for serving resized images from assets/thumbs folder.
  * If resized image is missing then image is resized first and then served.
  */
 images.get("/", function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
-    var filename, width, height, rawImgPath, rawImgExists, resizedImgPath, resizedImgExists, error_1;
+    var filename, width, height, validationErrors, rawImgPath, rawImgExists, resizedImgPath, resizedImgExists, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -58,9 +59,9 @@ images.get("/", function (req, res, next) { return __awaiter(void 0, void 0, voi
                 filename = req.query.filename;
                 width = parseInt(req.query.width);
                 height = parseInt(req.query.height);
-                //validating the input
-                if (!width || !height || !filename) {
-                    next(new AppError_1.default(400, "Width or height parameters are wrong or missing"));
+                validationErrors = (0, express_validator_1.validationResult)(req);
+                if (!validationErrors.isEmpty()) {
+                    next(new AppError_1.default(400, JSON.stringify(validationErrors.array())));
                     return [2 /*return*/];
                 }
                 rawImgPath = path_1.default.join(process.cwd(), "assets", "".concat(filename, ".jpg"));

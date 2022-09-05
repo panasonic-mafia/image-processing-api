@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
  *  A custom error handler middleware
+ *  Inspired by: Inspired by: https://www.smashingmagazine.com/2020/08/error-handling-nodejs-error-classes/
  * @param err - error
  * @param req - express request
  * @param res - express response

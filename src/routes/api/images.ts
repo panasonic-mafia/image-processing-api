@@ -3,6 +3,7 @@ import path from "path";
 import fs from "node:fs";
 import resizeImage from "../../utils/resizeImage";
 import AppError from "../../errors/AppError";
+import { Result, validationResult } from "express-validator";
 
 const images = Router();
 
@@ -19,11 +20,12 @@ images.get(
       const height: number = parseInt(req.query.height as string);
 
       //validating the input
-      if (!width || !height || !filename) {
+      const validationErrors: Result = validationResult(req);
+      if (!validationErrors.isEmpty()) {
         next(
           new AppError(
             400,
-            "Width, height or filename parameters are wrong or missing"
+            JSON.stringify(validationErrors.array())
           )
         );
         return;

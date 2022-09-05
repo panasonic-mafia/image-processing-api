@@ -16,7 +16,8 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * Custom error class which can store status code and message
+ * Custom error class which can store status code and message.
+ * Inspired by: https://www.smashingmagazine.com/2020/08/error-handling-nodejs-error-classes/
  */
 var AppError = /** @class */ (function (_super) {
     __extends(AppError, _super);

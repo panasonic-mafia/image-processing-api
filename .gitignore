@@ -1,3 +1,6 @@
+# App specific
+./assets/thumb
+
 # Logs
 logs
 *.log

@@ -64,7 +64,7 @@ var resizeImage = function (imgPath, width, height) { return __awaiter(void 0, v
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 3, , 4]);
-                thumbFolder = path_1.default.join(process.cwd(), 'assets', 'thumb');
+                thumbFolder = path_1.default.join(process.cwd(), "assets", "thumb");
                 if (!(0, fs_1.existsSync)(thumbFolder)) {
                     (0, fs_1.mkdirSync)(thumbFolder);
                 }
